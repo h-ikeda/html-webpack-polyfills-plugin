@@ -1,0 +1,32 @@
+{
+  "name": "html-webpack-polyfills-plugin",
+  "version": "0.0.1",
+  "description": "Inject <script> tag that references polyfill service (https://polyfill.io) to html via HTML Webpack Plugin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/h-ikeda/html-webpack-polyfills-plugin.git"
+  },
+  "keywords": [
+    "html",
+    "webpack",
+    "polifill",
+    "es6",
+    "es7",
+    "plugin"
+  ],
+  "author": "Hiroki IKEDA",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/h-ikeda/html-webpack-polyfills-plugin/issues"
+  },
+  "homepage": "https://github.com/h-ikeda/html-webpack-polyfills-plugin#readme",
+  "devDependencies": {
+    "html-webpack-plugin": "^2.28.0",
+    "mocha": "^3.4.1",
+    "webpack": "^2.5.1"
+  }
+}
