@@ -14,6 +14,7 @@ describe("Testing HTML Webpack Polyfills Plugin...", function() {
         assert(testInstance instanceof HtmlWebpackPolyfillsPlugin);
     });
     describe("Can compile with webpack", function() {
+        this.timeout(10000);
         function bundle(options, expectedUrl, done) {
             let webpackOptions = require("./test_webpack.config")();
             if (options) {
@@ -31,7 +32,7 @@ describe("Testing HTML Webpack Polyfills Plugin...", function() {
                     if (err) {
                         throw err;
                     }
-                    assert(text.search(new RegExp("<script[^>]+src=\"" + expectedUrl + "\"[^>]*>[^<]*<\/script>")) >= 0);
+                    assert(text.includes("\"" + expectedUrl + "\""), text);
                     fs.unlinkSync(__dirname + "/temp/test_index.html");
                     fs.unlinkSync(__dirname + "/temp/test_bundle.js");
                     fs.rmdir(__dirname + "/temp", done);
@@ -64,6 +65,36 @@ describe("Testing HTML Webpack Polyfills Plugin...", function() {
         });
         it("compile with type:js & minify:false options", function(done) {
             bundle({type: "js", minify: false}, "https://cdn.polyfill.io/v2/polyfill.js", done);
+        });
+        it("compile with features string options", function(done) {
+            bundle({features: "Array.prototype.map,modernizr:es5array|always"}, "https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.map,modernizr:es5array|always", done);
+        });
+        it("compile with features array options", function(done) {
+            bundle({features: ["Array.prototype.map", "modernizr:es5array|always"]}, "https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.map,modernizr:es5array|always", done);
+        });
+        it("compile with features object array options", function(done) {
+            bundle({features: ["Array.prototype.map", {feature: "modernizr:es5array", flags: "always"}]}, "https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.map,modernizr:es5array|always", done);
+        });
+        it("compile with features object array with flag array options", function(done) {
+            bundle({features: ["Array.prototype.map", {feature: "modernizr:es5array", flags: ["always"]}]}, "https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.map,modernizr:es5array|always", done);
+        });
+        it("compile with features object array with flag array options", function(done) {
+            bundle({features: ["Array.prototype.map", {feature: "modernizr:es5array", flags: ["always", "gated"]}]}, "https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.map,modernizr:es5array|always|gated", done);
+        });
+        it("compile with empty features array options", function(done) {
+            bundle({features: []}, "https://cdn.polyfill.io/v2/polyfill.min.js", done);
+        });
+        it("compile with empty features string options", function(done) {
+            bundle({features: ""}, "https://cdn.polyfill.io/v2/polyfill.min.js", done);
+        });
+        it("compile with features object array with empty flag string options", function(done) {
+            bundle({features: ["Array.prototype.map", {feature: "modernizr:es5array", flags: ""}]}, "https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.map,modernizr:es5array", done);
+        });
+        it("compile with features object array with empty flag array options", function(done) {
+            bundle({features: ["Array.prototype.map", {feature: "modernizr:es5array", flags: []}]}, "https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.map,modernizr:es5array", done);
+        });
+        it("compile with features object array without flags options", function(done) {
+            bundle({features: ["Array.prototype.map", {feature: "modernizr:es5array"}]}, "https://cdn.polyfill.io/v2/polyfill.min.js?features=Array.prototype.map,modernizr:es5array", done);
         });
     });
 });
