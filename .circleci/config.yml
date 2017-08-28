@@ -19,6 +19,6 @@ jobs:
                 command:
                     yarn test
             - store_test_results:
-                path: ./test-results.xml
+                path: ./junit
             - store_artifacts:
-                path: ./test-results.xml
+                path: ./junit
