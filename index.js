@@ -17,13 +17,8 @@ module.exports = class {
                     if (Array.isArray(this.options.features)) {
                         features = this.options.features.map((feature) => {
                             if (typeof feature === "object") {
-                                if ("flags" in feature) {
-                                    let flags = Array.isArray(feature.flags) ? feature.flags.join("|"): feature.flags;
-                                    if (flags) {
-                                        return feature.feature + "|" + flags;
-                                    }
-                                }
-                                return feature.feature;
+                                let flags = Array.isArray(feature.flags) ? feature.flags.join("|"): feature.flags;
+                                return feature.feature + (flags ? "|" + flags: "");
                             }
                             return feature;
                         }).join();
