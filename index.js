@@ -15,7 +15,7 @@ module.exports = class {
                 let features;
                 if ("features" in this.options) {
                     if (Array.isArray(this.options.features)) {
-                        features = this.options.features.map(feature => {
+                        features = this.options.features.map((feature) => {
                             if (typeof feature === "object") {
                                 let flags;
                                 if ("flags" in feature) {
