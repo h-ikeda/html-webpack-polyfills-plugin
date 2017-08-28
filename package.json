@@ -1,6 +1,6 @@
 {
   "name": "html-webpack-polyfills-plugin",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Inject <script> tag that references polyfill service (https://polyfill.io) to html via HTML Webpack Plugin.",
   "main": "index.js",
   "scripts": {
