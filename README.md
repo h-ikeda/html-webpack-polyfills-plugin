@@ -32,3 +32,6 @@ default: true
 ### type
 type: string  
 default: "js"
+### features
+type: Array or string  
+default: undefined
