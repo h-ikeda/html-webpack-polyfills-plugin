@@ -4,7 +4,7 @@
   "description": "Inject <script> tag that references polyfill service (https://polyfill.io) to html via HTML Webpack Plugin.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter mocha-multi --reporter-options spec=-,mocha-junit-reporter=-"
+    "test": "MOCHA_FILE=./junit/test-results.xml mocha --reporter mocha-multi --reporter-options spec=-,mocha-junit-reporter=-"
   },
   "repository": {
     "type": "git",
