@@ -493,9 +493,9 @@ debug@^2.2.0:
   dependencies:
     ms "2.0.0"
 
-debug@^3.1.0:
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-3.2.6.tgz#e83d17de16d8a7efb7717edbe5fb10135eee629b"
+debug@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/debug/-/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
   dependencies:
     ms "^2.1.1"
 
@@ -1453,10 +1453,10 @@ mocha-junit-reporter@^1.13.0:
     xml "^1.0.0"
 
 mocha-multi@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/mocha-multi/-/mocha-multi-1.1.0.tgz#5081f0f1f9d63ceb36791b54576d219d8e546649"
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/mocha-multi/-/mocha-multi-1.1.3.tgz#1cec7a286a26952fa4d1ad25eaaf758d183afde9"
   dependencies:
-    debug "^3.1.0"
+    debug "^4.1.1"
     is-string "^1.0.4"
     lodash.once "^4.1.1"
     mkdirp "^0.5.1"
